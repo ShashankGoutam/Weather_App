@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="manifest" href="manifest.json" />
+  <title>Weather App</title>
+</head>
+<body>
+  <main>
+    <section id="weather-wrapper">
+      <h1>Weather App</h1>
+
+      <!-- Search Bar & Location Button -->
+      <div id="weather-search">
+        <input id="search" type="text" placeholder="Enter city name" />
+        <input id="submit" type="submit" onclick="fetchWeather()" value="Search" />
+        <button id="geo-btn">📍 Use My Location</button>
+      </div>
+
+      <!-- Unit Toggle -->
+      <div class="toggle-container">
+        <label for="unitToggle">
+          <input type="checkbox" id="unitToggle" onchange="toggleUnit()" />
+          Toggle °F
+        </label>
+      </div>
+
+      <!-- Weather Output -->
+      <div id="weather-data" style="display: none;"></div>
+
+      <!-- Forecast Output -->
+      <div id="forecast-container" style="display: none;">
+        <h2>5-Day Forecast</h2>
+        <div id="forecast"></div>
+      </div>
+
+      <!-- Error Message -->
+      <div id="error-message"></div>
+    </section>
+  </main>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+  <script>
+    // PWA Support
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+  </script>
+</body>
+</html>
